@@ -32,9 +32,9 @@ export default {
     },
     methods:{
          test:function() {
-              client_object.Invoke("GetDevices", "", "this.initData","");
+              client_object.Invoke("GetDevices", "", "initData","");
          },
-         initData:function(json) {
+         initData(json) {
              console.log(json);
          }
     }
