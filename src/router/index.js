@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import PrintTemps from '@/view/eqManagement/PrintTemps' 
-import Base from '@/view/BaseInformation' 
-import management from '@/view/eqManagement/management' 
+
 
 Vue.use(Router)
 
@@ -13,19 +10,15 @@ export default new Router({
     {
       path: '/',
       name: 'PrintTemps',
-      component: PrintTemps
-    },{
-      path: '/PrintTemps',
-      name: 'PrintTemps',
-      component: PrintTemps
+      component: () => import('./../view/eqManagement/PrintTemps')
     },{ 
       path: '/Base',
       name: 'Base',
-      component: Base 
+      component: () => import('./../view/BaseInformation') 
     },{
       path: '/management',
       name: 'management',
-      component: management 
+      component: () => import('./../view/eqManagement/management') 
     }
   ]
 })

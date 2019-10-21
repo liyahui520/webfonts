@@ -1,15 +1,15 @@
 <template>
     <Card dis-hover>
-        <p slot="title" style="text-align: left;">
+        <p slot="title" style="text-align: left;" :title="Name">
             <span class="iconfont icon-shebei"></span>
-            设备名称
+            {{Name | ellipsis}}
         </p>
         <a href="#" slot="extra" @click.prevent="changeLimit">
             <Icon type="ios-loop-strong"></Icon>
             更换模板
         </a>
         <div>
-        <span style="float:left;">测试模板</span>
+        <span style="float:left;">{{PrintName}}</span>
         <span style="float:right;color:#D3D3D3">2019-10-10</span>
         </div>
         <div class="box">
@@ -23,7 +23,29 @@
 
 <script>
 export default {
-    
+    props:{
+        Name:{
+            type: String,
+            default: ''
+        },
+        PrintName:{
+            type: String,
+            default: ''
+        },
+        Author:{
+            type: String,
+            default: ''
+        }
+    },
+    filters: {
+    ellipsis (value) {
+      if (!value) return ''
+      if (value.length > 18) {
+        return value.slice(0,18) + '...'
+      }
+      return value
+    }
+  } 
 }
 </script>
 

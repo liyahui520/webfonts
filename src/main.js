@@ -8,6 +8,7 @@ import 'view-design/dist/styles/iview.css'
 import './assets/iconfont/iconfont.css'
 import './assets/iconfont/iconfont.js' 
 Vue.use(ViewUI);
+
 router.beforeEach((to, from, next) => {
   // to: Route: 即将要进入的目标 路由对象
   // from: Route: 当前导航正要离开的路由
