@@ -28,6 +28,7 @@ export default {
         }
     },
     mounted:function(){
+        window.initData = this.initData;
         this.test();
     },
     methods:{
