@@ -26,6 +26,17 @@ export default {
                 {name: '3',imageUrl: '@/assets/images/print.jpg'}
                 ]
         }
+    },
+    mounted:function(){
+        this.test();
+    },
+    methods:{
+         test:function() {
+              client_object.Invoke("GetDevices", "", "initData","");
+         },
+         initData:function(json) {
+             console.log(json);
+         }
     }
 }
 </script>
