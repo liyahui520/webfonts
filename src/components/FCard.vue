@@ -8,7 +8,7 @@
                 <img width="90%" height="220px" src="./../assets/images/print.jpg" /> 
                 <div class="subscript">
                     使用中
-                    </div>
+                </div>
             </div>
             <!-- <div class="project-tag" style="position:absolute; width:75%; height:70%; right:45%; top:20px; ">
                 <div>123131</div>
