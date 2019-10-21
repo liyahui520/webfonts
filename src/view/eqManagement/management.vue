@@ -18,7 +18,7 @@ export default {
     data(){
         return{
             lists:[
-                {name:'设备1'},
+                {name:'设备1'}, 
                 {name:'设备2'},
                 {name:'设备3'},
                 {name:'设备4'},
