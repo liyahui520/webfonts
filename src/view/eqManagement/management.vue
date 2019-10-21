@@ -1,11 +1,12 @@
 <template>
-<div>
+<div style="margin:0 auto;width:100%;">
+    <div style="margin:1%;margin-left:60px;">
     <!-- <Row type="flex" justify="center" class="code-row-bg"> -->
         <div class="div" v-for="(item,index) in lists" :key="index"> 
         <LineDiv></LineDiv> 
         </div>
     <!-- </Row> -->
-    
+    </div>
 </div>
 </template>
 
@@ -34,9 +35,10 @@ export default {
 
 
 <style scoped> 
-.div{
-    float: left;
-    width: 14%;
-    margin: 1%;
-}
+.div{ 
+    width: 280px;
+    margin: 1%; 
+    display: -webkit-inline-box;
+    text-align: -webkit-center;
+} 
 </style>

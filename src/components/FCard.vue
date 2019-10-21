@@ -5,7 +5,7 @@
     
             <p class="title">{{cardName}}</p>
             <div style="margin:0%;" class="con">
-                <img width="90%" height="220px" src="./../assets/images/print.jpg" /> 
+                <img width="90%" height="260px" src="./../assets/images/print.jpg" /> 
                 <div class="subscript">
                     使用中
                 </div>
@@ -58,7 +58,7 @@ export default {
       .subscript{
           text-align: center;
         color: #fff;
-        height: 10%;
+        height: 11%;
         width: 90%;
         position: absolute;
         right: -19%;

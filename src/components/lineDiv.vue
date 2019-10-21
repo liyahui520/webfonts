@@ -42,7 +42,7 @@ export default {
     top: 16px !important;
 }
 .content {
-    height: 12%;
+    height: 320px;
     margin: 1px;
     background-color: #fff;    
 }
