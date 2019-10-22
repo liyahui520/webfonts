@@ -4,7 +4,7 @@
             <span class="iconfont icon-shebei"></span>
             {{Name | ellipsis}}
         </p>
-        <a href="#" slot="extra" @click.prevent="changeLimit">
+        <a href="#" slot="extra" @click="changeLimit">
             <Icon type="ios-loop-strong"></Icon>
             更换模板
         </a>
@@ -45,7 +45,12 @@ export default {
       }
       return value
     }
-  } 
+  },
+  methods:{
+      changeLimit:function(params) {
+          this.$parent.changeLimit(this.Name);
+      }
+  }
 }
 </script>
 

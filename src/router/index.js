@@ -19,6 +19,10 @@ export default new Router({
       path: '/management',
       name: 'management',
       component: () => import('./../view/eqManagement/management') 
+    },{
+      path: '/modal',
+      name: 'modal',
+      component: () => import('./../view/modal') 
     }
   ]
 })
