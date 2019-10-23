@@ -46,7 +46,7 @@ export default {
     props:{
         EntityItem:{
             type: Object,
-            default: ()=>[]
+            default: ()=>{}
         },
         IsShow:{
             type: Boolean,
