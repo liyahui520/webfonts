@@ -3,10 +3,24 @@
      <Card>
         <div style="text-align:center;position:relative;">
     
-            <p class="title">{{cardName}}</p>
+            <p class="title">{{EntityItem.Name}}</p>
             <div style="margin:0%;" class="con">
-                <img width="90%" height="260px" src="./../assets/images/print.jpg" /> 
-                <div class="subscript">
+                <VueHoverMask >
+                    <img width="90%" height="260px" src="./../assets/images/print.jpg" /> 
+                    <template v-slot:action>
+                          <Row type="flex"  class="code-row-bg" style="margin:2%;">
+                                <i-col span="6" >作者：</i-col>
+                                <i-col span="12" style="text-align:left;">{{EntityItem.Author}} </i-col>
+                          </Row>
+                           <Row type="flex"  class="code-row-bg" style="margin:2%;">
+                                <i-col span="6" >描述：</i-col>
+                                <i-col span="12" style="text-align:left;">{{EntityItem.Describe}} </i-col>
+                          </Row> 
+                          <i class="iconfont icon-bianji-copy">点击预览</i>
+                    </template>
+                    
+                </VueHoverMask>
+                <div class="subscript" v-if="IsShow">
                     使用中
                 </div>
             </div>
@@ -18,22 +32,25 @@
                 
             </b>  
             <p style="position:absolute; width:70%; height:70%; right:45%; top:20px;">使用</p> -->
-        <p>使用</p>
+        <i-button type="success" size="small" @click="Qy"  v-if="!IsShow" long>启用</i-button>
+        <i-button type="error" size="small"  v-if="IsShow" long>启用中</i-button>
         </div>
     </Card>
     </div>
 </template>
 
 <script>
+import VueHoverMask  from './VueHoverMask';
 export default {
+     components: { VueHoverMask },
     props:{
-        titleName:{
-            type: String,
-            default: '测试模板'
+        EntityItem:{
+            type: Object,
+            default: ()=>[]
         },
-        imageUrl:{
-            type: String,
-            default: ''
+        IsShow:{
+            type: Boolean,
+            default: true
         }
     },
     data(){
@@ -41,13 +58,20 @@ export default {
             cardName: this.titleName,
             images: this.imageUrl
         }
+    },
+    mounted:function() {
+    },
+    methods:{
+        Qy:function() { 
+        }
     }
 }
 </script>
 
 <style scoped>
 .title{
-    background-color: cornflowerblue;
+    background-color: #3399ff;
+    color:#fff;
 }
  
  .con{

@@ -1,11 +1,11 @@
 <template>
 <div ref="modal">
     <Modal :IsModel="IsModel" v-model="modal1"
-        :title="title"
+        :title="SingData.dev.Name"
         @on-ok="ok" 
         @on-cancel="cancel"
         :fullscreen="true">
-        <PrintTemps></PrintTemps>
+        <PrintTemps :NewEntity="SingData"></PrintTemps>
     </Modal>
 </div>
   
@@ -20,9 +20,9 @@ import PrintTemps from './eqManagement/PrintTemps'
                 type: Boolean,
                 required: true
             },
-            title:{
-                type: String,
-                required: true
+            SingData:{
+                type: Object,
+                required: ()=>[]
             }
         },
         data () {
@@ -31,7 +31,7 @@ import PrintTemps from './eqManagement/PrintTemps'
             }
         },
         mounted:function(){
-            alert(this.IsModel)
+            console.log(this.SingData)
         },
         methods: {
             ok () {

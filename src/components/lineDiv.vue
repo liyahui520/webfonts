@@ -1,20 +1,35 @@
 <template>
     <Card dis-hover>
-        <p slot="title" style="text-align: left;" :title="Name">
+        <p slot="title" style="text-align: left;" :title="ItemData.dev.Name">
             <span class="iconfont icon-shebei"></span>
-            {{Name | ellipsis}}
+            {{ItemData.dev.Name | ellipsis}}
         </p>
         <a href="#" slot="extra" @click="changeLimit">
             <Icon type="ios-loop-strong"></Icon>
             更换模板
         </a>
         <div>
-        <span style="float:left;">{{PrintName}}</span>
+        <span style="float:left;">{{ItemData.print.PrintInfo.Name}}</span>
         <span style="float:right;color:#D3D3D3">2019-10-10</span>
         </div>
         <div class="box">
             <div class="content" > 
+                 <VueHoverMask @click="PrintViewer">
               <img width="90%" height="90%" src="./../assets/images/print.jpg" />
+               
+                    <template v-slot:action>
+                          <Row type="flex"  class="code-row-bg" style="margin:2%;">
+                                <i-col span="6" >作者：</i-col>
+                                <i-col span="12" style="text-align:left;">{{ItemData.print.PrintInfo.Author}} </i-col>
+                          </Row>
+                           <Row type="flex"  class="code-row-bg" style="margin:2%;">
+                                <i-col span="6" >描述：</i-col>
+                                <i-col span="12" style="text-align:left;">{{ItemData.print.PrintInfo.Describe}} </i-col>
+                          </Row> 
+                          <i class="iconfont icon-bianji-copy">点击预览</i>
+                    </template>
+                    
+                </VueHoverMask>
             </div> 
         </div>
         
@@ -22,19 +37,18 @@
 </template>
 
 <script>
+import VueHoverMask  from './VueHoverMask';
 export default {
+    components: { VueHoverMask },
     props:{
-        Name:{
-            type: String,
-            default: ''
-        },
-        PrintName:{
-            type: String,
-            default: ''
-        },
-        Author:{
-            type: String,
-            default: ''
+        ItemData:{
+            type: Object,
+            default: () => []
+        }
+    },
+    data(){
+        return{
+         // Entity:JSON.parse(this.ItemData)
         }
     },
     filters: {
@@ -48,7 +62,10 @@ export default {
   },
   methods:{
       changeLimit:function(params) {
-          this.$parent.changeLimit(this.Name);
+          this.$parent.changeLimit(this.ItemData);
+      },
+      PrintViewer:function(params) {
+           this.$emit('PrintViewer',this.ItemData);
       }
   }
 }
