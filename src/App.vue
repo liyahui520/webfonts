@@ -5,6 +5,11 @@
     
     <!-- <img src="./assets/logo.png"> -->
     <router-view/>
+    <!-- <Spin fix>
+                <Icon type="load-c" size=18 class="demo-spin-icon-load"></Icon>
+                <div>Loading</div>
+            </Spin>
+            <Spin size="large"></Spin> -->
     </div>
   </div>
 </template>

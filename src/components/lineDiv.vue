@@ -9,11 +9,11 @@
             更换模板
         </a>
         <div>
-        <span style="float:left;">{{ItemData.print.PrintInfo.Name}}</span>
-        <span style="float:right;color:#D3D3D3">2019-10-10</span>
+        <span style="float:left;"  v-if="ItemData.print!=null">{{ItemData.print==null?'':ItemData.print.PrintInfo.Name}}</span>
+        <span style="float:right;color:#D3D3D3"  v-if="ItemData.print!=null">2019-10-10</span>
         </div>
         <div class="box">
-            <div class="content" > 
+            <div class="content" v-if="ItemData.print!=null"> 
                  <VueHoverMask @click="PrintViewer">
               <img width="90%" height="90%" src="./../assets/images/print.jpg" />
                
@@ -31,8 +31,12 @@
                     
                 </VueHoverMask>
             </div> 
+            
         </div>
-        
+        <div class="content" v-if="ItemData.print==null">
+             <img width="90%" height="90%"  src="./../assets/images/print.jpg" />
+                <p  width="90%" style="color:red;" >暂无模板</p>
+            </div>
     </Card>
 </template>
 
@@ -43,7 +47,7 @@ export default {
     props:{
         ItemData:{
             type: Object,
-            default: () => []
+            default:   {print:{PrintInfo:{Name:'',Author:'',Describe:''},dev:{Name:''}}}
         }
     },
     data(){

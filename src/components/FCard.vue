@@ -5,7 +5,7 @@
     
             <p class="title">{{EntityItem.Name}}</p>
             <div style="margin:0%;" class="con">
-                <VueHoverMask >
+                <VueHoverMask @click="PrintViewer">
                     <img width="90%" height="260px" src="./../assets/images/print.jpg" /> 
                     <template v-slot:action>
                           <Row type="flex"  class="code-row-bg" style="margin:2%;">
@@ -20,7 +20,7 @@
                     </template>
                     
                 </VueHoverMask>
-                <div class="subscript" v-if="IsShow">
+                <div class="subscript" v-if="EntityItem.IsShow">
                     使用中
                 </div>
             </div>
@@ -32,8 +32,8 @@
                 
             </b>  
             <p style="position:absolute; width:70%; height:70%; right:45%; top:20px;">使用</p> -->
-        <i-button type="success" size="small" @click="Qy"  v-if="!IsShow" long>启用</i-button>
-        <i-button type="error" size="small"  v-if="IsShow" long>启用中</i-button>
+        <i-button type="success" size="small" @click="Qy"  v-if="!EntityItem.IsShow" long>启用</i-button>
+        <i-button type="error" size="small"  v-if="EntityItem.IsShow" long>启用中</i-button>
         </div>
     </Card>
     </div>
@@ -47,10 +47,6 @@ export default {
         EntityItem:{
             type: Object,
             default: ()=>{}
-        },
-        IsShow:{
-            type: Boolean,
-            default: true
         }
     },
     data(){
@@ -63,6 +59,13 @@ export default {
     },
     methods:{
         Qy:function() { 
+           this.$emit('Qy',this.EntityItem);
+        },
+        PrintViewer:function(){
+             let  perview = {PrintInfo:[]}
+            perview.PrintInfo.push(this.EntityItem);
+            console.log(perview)
+            this.$emit('PrintViewer',perview);
         }
     }
 }

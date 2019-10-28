@@ -5,7 +5,7 @@
         @on-ok="ok" 
         @on-cancel="cancel"
         :fullscreen="true">
-        <PrintTemps :NewEntity="SingData"></PrintTemps>
+        <PrintTemps :NewEntity="SingData" @Qy="Qy"></PrintTemps>
     </Modal>
 </div>
   
@@ -31,7 +31,6 @@ import PrintTemps from './eqManagement/PrintTemps'
             }
         },
         mounted:function(){
-            console.log(this.SingData)
         },
         methods: {
             ok () {
@@ -41,14 +40,14 @@ import PrintTemps from './eqManagement/PrintTemps'
                 this.$parent.ok();
             },
              beforeDestroy: function(e) {  
-                 console.log(1111) 
                           },
+            Qy:function(oldData){
+               this.$emit('Qy',oldData);
+         }
        
         },
         watch:{
             IsModel(oldVal,newVal) {
-                //this.IsModel=newVal;
-                console.log(this.IsModel)
                 this.modal1 = oldVal;
             }
         }
