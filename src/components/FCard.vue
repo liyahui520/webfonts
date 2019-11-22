@@ -62,8 +62,8 @@ export default {
            this.$emit('Qy',this.EntityItem);
         },
         PrintViewer:function(){
-             let  perview = {PrintInfo:[]}
-            perview.PrintInfo.push(this.EntityItem);
+             let  perview = {PrintInfo:{}}
+            perview.PrintInfo=this.EntityItem;
             console.log(perview)
             this.$emit('PrintViewer',perview);
         }

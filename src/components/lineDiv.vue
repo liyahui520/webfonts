@@ -1,8 +1,12 @@
 <template>
     <Card dis-hover>
+         
         <p slot="title" style="text-align: left;" :title="ItemData.dev.Name">
             <span class="iconfont icon-shebei"></span>
-            {{ItemData.dev.Name | ellipsis}}
+            <Tooltip :content="ItemData.dev.Name" theme="light" max-width="200">
+                    {{ItemData.dev.Name | ellipsis}}
+            </Tooltip>
+            
         </p>
         <a href="#" slot="extra" @click="changeLimit">
             <Icon type="ios-loop-strong"></Icon>
@@ -12,8 +16,8 @@
         <span style="float:left;"  v-if="ItemData.print!=null">{{ItemData.print==null?'':ItemData.print.PrintInfo.Name}}</span>
         <span style="float:right;color:#D3D3D3"  v-if="ItemData.print!=null">2019-10-10</span>
         </div>
-        <div class="box">
-            <div class="content" v-if="ItemData.print!=null"> 
+        <div :class="isclass?'box':''" >
+            <div :class="isclass?'content':''" v-if="ItemData.print!=null"> 
                  <VueHoverMask @click="PrintViewer">
               <img width="90%" height="90%" src="./../assets/images/print.jpg" />
                
@@ -48,6 +52,10 @@ export default {
         ItemData:{
             type: Object,
             default:   {print:{PrintInfo:{Name:'',Author:'',Describe:''},dev:{Name:''}}}
+        },
+        isclass:{
+            type: Boolean,
+            default: false
         }
     },
     data(){
@@ -66,7 +74,7 @@ export default {
   },
   methods:{
       changeLimit:function(params) {
-          this.$parent.changeLimit(this.ItemData);
+          this.$emit("changeLimit",this.ItemData);
       },
       PrintViewer:function(params) {
            this.$emit('PrintViewer',this.ItemData);

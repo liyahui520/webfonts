@@ -23,6 +23,10 @@ export default new Router({
       path: '/modal',
       name: 'modal',
       component: () => import('./../view/modal') 
+    },{
+      path: '/chart/:id',
+      name: 'chart',
+      component: () => import('@/view/chart') 
     }
   ]
 })
